@@ -151,6 +151,7 @@ class ButtonsGrid(QGridLayout):
                 result = math.pow(self._left, self._right)
             else:    
                 result = eval(self.equation)
+            result = float(result)
             if result.is_integer():
                 result = int(result)
             self.display.setText(str(result))
