@@ -125,6 +125,8 @@ class ButtonsGrid(QGridLayout):
         
         if self._left is None:
             self._left = float(displayText)
+            if self._left.is_integer():
+                self._left = int(self._left)
         
         self._opSelected = True
         self._op = buttonText
@@ -140,6 +142,8 @@ class ButtonsGrid(QGridLayout):
         
         if self._right is None:
             self._right = float(displayText)
+            if self._right.is_integer():
+                self._right = int(self._right)
 
         self.equation = f'{self._left} {self._op} {self._right}'
         try:
@@ -147,6 +151,8 @@ class ButtonsGrid(QGridLayout):
                 result = math.pow(self._left, self._right)
             else:    
                 result = eval(self.equation)
+            if result.is_integer():
+                result = int(result)
             self.display.setText(str(result))
             self._opSelected = True
         except ZeroDivisionError:
